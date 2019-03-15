@@ -16,3 +16,5 @@ mesmo. Iram existir 3 utilizadores com permissões diferentes: responsável do c
 funcionário e voluntário.
 Em suma, este sistema pretende substituir e melhorar os métodos de gerenciamento que estão a ser
 utilizados por este albergue neste momento.
+
+![](www/images/layout-da-pagina.png)
