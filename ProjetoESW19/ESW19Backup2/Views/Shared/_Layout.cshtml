@@ -1,0 +1,166 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ESW19Backup2.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALBERCOOL</title>
+
+
+    @Html.Partial("_Favicons")
+    <link rel="stylesheet" type="text/css" href="~/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/lib/DataTables/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/lib/kartik-v-bootstrap-fileinput-47c6347/css/fileinput.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/lib/jquery-ui-1.12.1/jquery-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/styles/main.css">
+
+    <script src="~/lib/jquery-3.2.1/jquery-3.2.1.min.js"></script>
+    <script src="~/lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script src="~/lib/DataTables/datatables.min.js"></script>
+    <script src="~/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/kartik-v-bootstrap-fileinput-47c6347/js/plugins/piexif.min.js"></script>
+    <script src="~/lib/kartik-v-bootstrap-fileinput-47c6347/js/plugins/sortable.js"></script>
+    <script src="~/lib/kartik-v-bootstrap-fileinput-47c6347/js/plugins/purify.min.js"></script>
+    <script src="~/lib/kartik-v-bootstrap-fileinput-47c6347/js/fileinput.min.js"></script>
+    <script src="~/lib/kartik-v-bootstrap-fileinput-47c6347/js/locales/pt.js"></script>
+    <style>
+        #primary_nav_wrap {
+            margin-top: 15px
+        }
+
+            #primary_nav_wrap ul {
+                list-style: none;
+                position: relative;
+                float: left;
+                margin: 0;
+                padding: 0
+            }
+
+                #primary_nav_wrap ul a {
+                    display: block;
+                    color: #333;
+                    text-decoration: none;
+                    font-weight: 700;
+                    font-size: 12px;
+                    line-height: 32px;
+                    padding: 0 15px;
+                    font-family: "HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif
+                }
+
+                #primary_nav_wrap ul li {
+                    position: relative;
+                    float: left;
+                    margin: 0;
+                    padding: 0
+                }
+
+                    #primary_nav_wrap ul li.current-menu-item {
+                        background: #ddd
+                    }
+
+                    #primary_nav_wrap ul li:hover {
+                        background: #1874cc
+                    }
+
+                #primary_nav_wrap ul ul {
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    background: #0c80ef;
+                    padding: 0
+                }
+
+                    #primary_nav_wrap ul ul li {
+                        float: none;
+                        width: 200px
+                    }
+
+                    #primary_nav_wrap ul ul a {
+                        line-height: 120%;
+                        padding: 10px 15px
+                    }
+
+                    #primary_nav_wrap ul ul ul {
+                        top: 0;
+                        left: 100%
+                    }
+
+                #primary_nav_wrap ul li:hover > ul {
+                    display: block
+                }
+    </style>
+</head>
+<body>
+    <img id="logo" src="~/images/Group-of-dogs-sitting-against-white-background-000021142304_Large_7c0d4dfc-a514-48a2-b7bb-46fd975306a7.png" alt="logo" height="300" width="1500" />
+    <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
+        <nav id="primary_nav_wrap" class="navbar">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        @if (User.Identity.Name == "akxeldacosta8@gmail.com")
+                        {
+                            <li><a asp-area="" asp-controller="Atribuicaos" asp-action="MostrarHorario">Associar Horario</a></li>
+                            <li><a asp-area="" asp-controller="Saude" asp-action="Index">Vacinas</a></li>
+                            <li><a asp-area="" asp-controller="Evento" asp-action="Index">Eventos</a></li>
+                            <li><a asp-area="" asp-controller="Caos" asp-action="IndexAdmin">Cao</a></li>
+                            <li><a asp-area="" asp-controller="Funcionario" asp-action="Index">Funcionarios</a></li>
+                            <li><a asp-area="" asp-controller="Adocao" asp-action="Index">Cães Adotados</a></li>
+                            <li>
+                                <a>Estatisticas</a>
+                                <ul>
+                                    <li style=""><a asp-area="" asp-controller="Estatistica" asp-action="Index">Estatisticas Eventos</a></li>
+                                    <li style=""><a asp-area="" asp-controller="Estatistica" asp-action="Index2">Estatisticas Adoção</a></li>
+                                    <li style=""><a asp-area="" asp-controller="Estatistica" asp-action="Index3">Estatisticas Cães</a></li>
+                                </ul>
+                            </li>
+                            <li><a asp-area="" asp-controller="Apadrinhar" asp-action="Index">Apadrinhamentos</a></li>
+                            <li><a asp-area="" asp-controller="Socios1" asp-action="Index">Socios</a></li>
+                            <li><a asp-area="" asp-controller="Voluntarios" asp-action="Index">Voluntarios</a></li>
+                            <li><a asp-area="" asp-controller="ReportarOcorrencias" asp-action="Files">Ocorrencias</a></li>
+                        }
+                         @if (User.Identity.Name == "costaalcemar@hotmail.com")
+                         {
+                            <li><a asp-area="" asp-controller="Atribuicaos" asp-action="MostrarHorario">Ver Horario</a></li>
+                            <li><a asp-area="" asp-controller="Funcionario" asp-action="Index2">Funcionarios</a></li>
+                             }
+                    }
+                    else
+                    {
+                        <li><a asp-area="" asp-controller="Caos" asp-action="Index">Disponiveis para adoção</a></li>
+                        <li><a asp-area="" asp-controller="Evento" asp-action="Index2">Eventos</a></li>
+                        <li><a asp-area="" asp-controller="Voluntarios" asp-action="Apoio">Apoios</a></li>
+                        <li><a asp-area="" asp-controller="ReportarOcorrencias" asp-action="Index">Reportar Ocorrencias</a></li>
+                    }
+                </ul>
+                @await Html.PartialAsync("_LoginPartial")
+            </div>
+        </nav>
+    </form>
+
+    <div class="container-fluid" id="conteudo">
+        <img src="~/images/help2.png" class="icon help" data-toggle="modal" data-target="#ModalAjuda" />
+        <h1>@ViewData["Titulo"]</h1>
+        @Html.Partial("_ResultMessage")
+        @RenderBody()
+    </div>
+
+    @Html.Partial("_HelpModal")
+    <div class="container" id="conteudo" style="margin-top: 30px;">
+        <hr />
+        <footer style="color:currentColor;">
+            @{DateTime data = new DateTime(2018, 12, 31, 00, 00, 00);
+                <p>&copy;@data.Year/@DateTime.Now.Year - AlberCool</p>
+            }
+        </footer>
+    </div>
+    <script type="text/javascript" src="~/js/site.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
